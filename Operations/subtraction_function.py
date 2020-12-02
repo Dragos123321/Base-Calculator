@@ -31,7 +31,7 @@ def compute_fractional_part(fractional_num_1, fractional_num_2, base):
     result = ""
 
     while len(fractional_num_2) < max_len:
-        fractional_num_2.append("0")
+        fractional_num_2 += "0"
 
     for i in range(max_len - 1, -1, -1):
         minuend = get_number_from_character(fractional_num_1[i])
@@ -41,15 +41,17 @@ def compute_fractional_part(fractional_num_1, fractional_num_2, base):
             reminder = 1
         else:
             last_digit = minuend - sub - reminder
+            reminder = 0
         result = result + get_character_from_number(last_digit)
 
     result = result[::-1]
-    result = result.lstrip("0")
+    result = result.rstrip("0")
     return result, reminder
 
 
 def compute_integer_part(real_num_1, real_num_2, base, fractional_reminder):
     reminder = fractional_reminder
+    print(reminder)
 
     if len(real_num_1) < len(real_num_2):
         raise ValueError("The subtrahend is greater than minuend")
@@ -83,5 +85,6 @@ def compute_integer_part(real_num_1, real_num_2, base, fractional_reminder):
                 result = result + get_character_from_number(last_digit)
 
         result = result[::-1]
-        result = result.lstrip("0")
+        if result != "0":
+            result = result.lstrip("0")
         return result

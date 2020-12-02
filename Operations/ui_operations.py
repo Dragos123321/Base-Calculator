@@ -1,7 +1,9 @@
 from Operations.addition_function import addition
+from Operations.division_function import division_op
 from Operations.multiplication_function import multiplication
 from Operations.subtraction_function import subtraction
 from Utilities.parse_functions import parse_operation
+import traceback
 
 
 def ui_menu():
@@ -41,7 +43,10 @@ def ui_menu_operations():
                         result = subtraction(number1, number2, base)
                     if operand[0] == "*":
                         result = multiplication(number1, number2, base)
+                    if operand[0] == "/":
+                        result = division_op(number1, number2, base)
                 except ValueError as ve:
                     print(ve)
+                    # traceback.print_exc()
 
                 print(result)
