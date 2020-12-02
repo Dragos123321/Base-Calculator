@@ -41,9 +41,6 @@ def compute_fractional_part(to_be_mul_fractional, to_mul, base):
         reminder = (get_number_from_character(to_be_mul_fractional[i]) * get_number_from_character(to_mul[0])
                     + reminder) // base
 
-    if reminder != 0:
-        result += get_character_from_number(reminder)
-
     result = result[::-1]
 
     if result[0] == '0':
