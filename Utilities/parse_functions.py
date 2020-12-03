@@ -1,17 +1,6 @@
 import re
 
 
-def parse_number(number):
-    pos = number.find(".")
-    if pos == -1:
-        return number, '0'
-
-    real = number[:pos]
-    fractional = number[pos + 1:]
-
-    return real, fractional
-
-
 def parse_operation(operation):
     operand = re.findall('\+|\*|-|/', operation)
     if len(operand) != 1:
