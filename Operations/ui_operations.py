@@ -1,3 +1,4 @@
+from Conversions.succesive_divisions import successive_divisions
 from Operations.addition_function import addition
 from Operations.division_function import division_op
 from Operations.multiplication_function import multiplication
@@ -9,6 +10,7 @@ import traceback
 def ui_menu():
     print("\nOptions Menu:")
     print("1 - insert operation")
+    print("2 - insert conversion")
     print("x - exit application")
 
 
@@ -50,3 +52,5 @@ def ui_menu_operations():
                     # traceback.print_exc()
 
                 print(result)
+            else:
+                print(successive_divisions("3466", 8, "5"))
