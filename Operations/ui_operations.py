@@ -1,4 +1,5 @@
 from Conversions.succesive_divisions import successive_divisions
+from Conversions.to_base_10 import to_base_10
 from Operations.addition_function import addition
 from Operations.division_function import division_op
 from Operations.multiplication_function import multiplication
@@ -53,4 +54,14 @@ def ui_menu_operations():
 
                 print(result)
             else:
-                print(successive_divisions("3466", 8, "5"))
+                source_base = int(input("Source base: "))
+                destination_base = int(input("Destination base: "))
+                number = input("Number: ")
+                number = number.upper()
+
+                if destination_base == 10:
+                    result = to_base_10(number, source_base)
+                    print(result)
+                elif source_base > destination_base:
+                    result = successive_divisions(number, source_base, destination_base)
+                    print(result)

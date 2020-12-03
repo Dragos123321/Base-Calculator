@@ -1,7 +1,7 @@
 from Utilities.numberic_utilities import get_number_from_character
 
 
-def to_base_10_real(number, base):
+def to_base_10(number, base):
     number_in_base_10 = 0
 
     exp = len(number) - 1

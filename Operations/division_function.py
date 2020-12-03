@@ -1,4 +1,4 @@
-from Conversions.to_base_10 import to_base_10_real
+from Conversions.to_base_10 import to_base_10
 from Utilities.numberic_utilities import get_number_from_character, get_character_from_number
 
 
@@ -30,7 +30,7 @@ def compute_integer_part(to_be_div_int, to_div, base):
                     if i != 0:
                         result += '0'
                     continue
-            num_to_div = to_base_10_real(num_to_div_str, base)
+            num_to_div = to_base_10(num_to_div_str, base)
             div = get_number_from_character(to_div[0])
 
             last_digit = num_to_div // div
@@ -39,6 +39,9 @@ def compute_integer_part(to_be_div_int, to_div, base):
                 num_to_div_str = get_character_from_number(num_to_div % div)
             else:
                 num_to_div_str = ""
+
+        if num_to_div_str == "":
+            num_to_div_str = "0"
 
         if result == "":
             return '0', num_to_div_str
