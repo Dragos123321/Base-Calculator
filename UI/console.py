@@ -1,7 +1,4 @@
-from Conversions.rapid_conversions import rapid_conversions
-from Conversions.substitution_method import convert_with_substitution
-from Conversions.succesive_divisions import successive_divisions
-from Conversions.to_base_10 import to_base_10
+from Conversions.conversions import Conversions
 from Operations.operations import Operations
 
 
@@ -65,16 +62,16 @@ class Console:
                         rapid_bases = [2, 4, 8, 16]
 
                         if destination_base == 10:
-                            result = to_base_10(number, source_base)
+                            result = Conversions.to_base_10(number, source_base)
                             print(result)
                         elif source_base in rapid_bases and destination_base in rapid_bases:
-                            result = rapid_conversions(number, source_base, destination_base)
+                            result = Conversions.rapid_conversions(number, source_base, destination_base)
                             print(result)
                         elif source_base > destination_base:
-                            result = successive_divisions(number, source_base, destination_base)
+                            result = Conversions.successive_divisions(number, source_base, destination_base)
                             print(result)
                         else:
-                            result = convert_with_substitution(number, source_base, destination_base)
+                            result = Conversions.substitution_method(number, source_base, destination_base)
                             print(result)
                     except ValueError as ve:
                         print(ve)

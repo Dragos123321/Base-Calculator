@@ -1,6 +1,6 @@
-from Conversions.to_base_10 import to_base_10
 from Utilities.comparison_functions import compare_int_numbers
 from Utilities.numberic_utilities import get_number_from_character, get_character_from_number
+from Utilities.to_base_10 import to_base_10
 
 
 class Operations:
