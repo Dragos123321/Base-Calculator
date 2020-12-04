@@ -1,3 +1,5 @@
+from Conversions.base_10_as_intermediate import base_10_as_intermediate
+from Conversions.rapid_conversions import rapid_conversions
 from Conversions.substitution_method import convert_with_substitution
 from Conversions.succesive_divisions import successive_divisions
 from Conversions.to_base_10 import to_base_10
@@ -60,8 +62,13 @@ def ui_menu_operations():
                 number = input("Number: ")
                 number = number.upper()
 
+                rapid_bases = [2, 4, 8, 16]
+
                 if destination_base == 10:
                     result = to_base_10(number, source_base)
+                    print(result)
+                elif source_base in rapid_bases and destination_base in rapid_bases:
+                    result = rapid_conversions(number, source_base, destination_base)
                     print(result)
                 elif source_base > destination_base:
                     result = successive_divisions(number, source_base, destination_base)
