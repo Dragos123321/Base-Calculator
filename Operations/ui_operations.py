@@ -1,3 +1,4 @@
+from Conversions.substitution_method import convert_with_substitution
 from Conversions.succesive_divisions import successive_divisions
 from Conversions.to_base_10 import to_base_10
 from Operations.addition_function import addition
@@ -64,4 +65,7 @@ def ui_menu_operations():
                     print(result)
                 elif source_base > destination_base:
                     result = successive_divisions(number, source_base, destination_base)
+                    print(result)
+                else:
+                    result = convert_with_substitution(number, source_base, destination_base)
                     print(result)

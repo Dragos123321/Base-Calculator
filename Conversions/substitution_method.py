@@ -1,5 +1,6 @@
-from Utilities.numberic_utilities import get_number_from_character
-from Utilities.parse_functions import parse_number
+from Operations.addition_function import addition
+from Operations.multiplication_function import multiplication
+from Utilities.numberic_utilities import get_number_from_character, get_character_from_number
 
 
 def convert_with_substitution(number, source_base, destination_base):
@@ -7,8 +8,17 @@ def convert_with_substitution(number, source_base, destination_base):
         if get_number_from_character(x) >= source_base:
             raise ValueError("Invalid number in source base")
 
-    result = 0
+    result = "0"
 
-    exp = 0
+    exp = len(number) - 1
 
-    return exp
+    for digit in number:
+        current_power = "1"
+        for i in range(exp):
+            current_power = multiplication(current_power, get_character_from_number(source_base), destination_base)
+        current_power = multiplication(current_power, digit, destination_base)
+        print(current_power, digit)
+        result = addition(result, current_power, destination_base)
+        exp -= 1
+
+    return result
