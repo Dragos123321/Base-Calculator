@@ -1,5 +1,6 @@
 from Conversions.conversions import Conversions
 from Operations.operations import Operations
+from Utilities.to_base_10 import to_base_10
 
 
 class Console:
@@ -27,16 +28,19 @@ class Console:
                 print("Invalid command")
             else:
                 if command == "1":
-                    base = input("Base: ")
+                    base = input("Base [2-16]: ")
                     base = int(base)
 
-                    number1, operand, number2 = [input("First number: ").strip(), input("Operator: ").strip(),
-                                                 input("Second Number: ").strip()]
+                    number1, operand, number2 = [input(f"First number base {base}: ").strip(),
+                                                 input("Operator [+, -, *, /]: ").strip(),
+                                                 input(f"Second Number {base}: ").strip()]
                     number1 = number1.upper()
                     number2 = number2.upper()
 
                     if operand[0] not in available_operands:
                         print(f"Operator {operand[0]} is invalid")
+                    elif base not in range(2, 17):
+                        print("The base is not in range [2-16]")
                     else:
                         result = ""
                         try:
@@ -54,15 +58,17 @@ class Console:
                         print(result)
                 else:
                     try:
-                        source_base = int(input("Source base: "))
-                        destination_base = int(input("Destination base: "))
+                        source_base = int(input("Source base [2-16]: "))
+                        destination_base = int(input("Destination base [2-16]: "))
                         number = input("Number: ")
                         number = number.upper()
 
                         rapid_bases = [2, 4, 8, 16]
 
-                        if destination_base == 10:
-                            result = Conversions.to_base_10(number, source_base)
+                        if source_base not in range(2, 17) or destination_base not in range(2, 17):
+                            print("The base is not in range [2-16]")
+                        elif destination_base == 10:
+                            result = to_base_10(number, source_base)
                             print(result)
                         elif source_base in rapid_bases and destination_base in rapid_bases:
                             result = Conversions.rapid_conversions(number, source_base, destination_base)
